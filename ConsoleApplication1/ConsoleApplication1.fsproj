@@ -45,7 +45,7 @@
     <Compile Include="Program.fs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Christmas\AssignmentGenerator.Library.fsproj">
+    <ProjectReference Include="..\AssignmentGenerator\AssignmentGenerator.Library.fsproj">
       <Name>AssignmentGenerator.Library</Name>
       <Project>{006cc475-9bc0-4804-ad40-7119d163c5ef}</Project>
       <Private>True</Private>

@@ -138,14 +138,14 @@ let rule_no_previous_family_assignments assignments =
 
 /////////////////////////////////////////////rules///////////////////////////////////////////////////////////////////
 
-let randomize list seed = 
+let randomize list seed (random:System.Random) = 
     let comp i j = 
         if i > j then 1
         else if i < j then -1
         else 0
 
-    let seed' = (int)System.DateTime.Now.Ticks + seed
-    let random = new System.Random(seed') 
+    //let seed' = (int)System.DateTime.Now.Ticks + seed
+    //let random = new System.Random(seed') 
     let list'=
         list
         |> List.map (fun i -> (random.Next(), i))
@@ -180,21 +180,24 @@ let assignments_are_valid assignments =
         && (parent_to_child_ratio assignments distinct_families) 
         && (rule_good_family_mix assignments distinct_families)
         && (rule_no_previous_family_assignments assignments)
-        
 
-let rec find_assignments people_list n = 
-    if n = 0 then System.Console.WriteLine("MAX RECURSION REACHED")
-    else
-        if n % 100000 = 0 then System.Console.Write(".")
-        let people_list' = randomize people_list (n * 2)
-        let assignments = create_assignment_list people_list people_list' []
-        
-        if assignments_are_valid assignments then
-            System.Console.WriteLine(n.ToString())
-            print_assignments assignments
+let find_assignments people_list n = 
+    let rec find_assignments_kernel people_list n random = 
+        if n = 0 then System.Console.WriteLine("MAX RECURSION REACHED")
         else
-            find_assignments people_list (n - 1)
+            if n % 100000 = 0 then System.Console.Write(".")
+            let people_list' = randomize people_list (n * 2) random
+            let assignments = create_assignment_list people_list people_list' []
+        
+            if assignments_are_valid assignments then
+                System.Console.WriteLine(n.ToString())
+                print_assignments assignments
+            else
+                find_assignments_kernel people_list (n - 1) random
 
+    let random = new System.Random() 
+    find_assignments_kernel people_list n random
+    
 
 //let start = System.DateTime.Now
 //find_assignments people 5000000
