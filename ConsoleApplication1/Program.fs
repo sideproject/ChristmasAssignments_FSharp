@@ -6,6 +6,7 @@ let margaret =      { FirstName="margaret";     LastName="1"; AgeType="parent"; 
 let elise =         { FirstName="elise";        LastName="1"; AgeType="parent"; Previous=["james";       "hollie";      "sam";         "anne" ]}
 let christopher =   { FirstName="christopher";  LastName="1"; AgeType="child";  Previous=["shawn";       "daniel";      "anne";        "carla" ]}
 let julia =         { FirstName="julia";        LastName="1"; AgeType="child";  Previous=["carla";       "mallory";     "charlie";     "dean" ]}
+let jacob =         { FirstName="jacob";        LastName="1"; AgeType="child";  Previous=[                                             "X"]}
 let charlie =       { FirstName="charlie";      LastName="2"; AgeType="parent"; Previous=["jimmy";       "dean";        "hollie";      "margaret" ]}
 let anne =          { FirstName="anne";         LastName="2"; AgeType="parent"; Previous=["sarah";       "carla";       "christopher"; "frank" ]}
 let emily =         { FirstName="emily";        LastName="2"; AgeType="child";  Previous=["sam";         "james";       "andrew";      "christopher" ]}
@@ -13,6 +14,7 @@ let laura =         { FirstName="laura";        LastName="2"; AgeType="child";  
 let jimmy =         { FirstName="jimmy";        LastName="3"; AgeType="parent"; Previous=["daniel";      "charlie";     "elise";       "mary" ]}
 let hollie =        { FirstName="hollie";       LastName="3"; AgeType="parent"; Previous=["elise";       "sarah";       "mallory";     "shawn" ]}
 let andrew =        { FirstName="andrew";       LastName="3"; AgeType="child";  Previous=["joeseph";     "sam";         "frank";       "laura" ]}
+let megan =         { FirstName="megan";        LastName="3"; AgeType="child";  Previous=[                                             "X"]}
 let amie =          { FirstName="amie";         LastName="3"; AgeType="child";  Previous=["emiliy";      "martha";      "emily";       "mallory" ]}
 let frank =         { FirstName="frank";        LastName="4"; AgeType="parent"; Previous=["margaret";    "shawn";       "daniel";      "emily" ]}
 let carla =         { FirstName="carla";        LastName="4"; AgeType="parent"; Previous=["anne";        "mary";        "dean";        "hollie" ]}
@@ -28,12 +30,12 @@ let sam =           { FirstName="sam";          LastName="6"; AgeType="child";  
 let daniel =        { FirstName="daniel";       LastName="6"; AgeType="child";  Previous=["julia";       "emily";       "margaret";    "amie" ]}
   
 
-let people = [  eliz; margaret; elise; christopher; julia; 
+let people = [  eliz; margaret; elise; christopher; julia; jacob;
                 charlie; anne; emily; laura; 
-                jimmy; hollie; andrew; amie; 
+                jimmy; hollie; andrew; megan; amie; 
                 frank; carla; mallory; martha; 
                 mary; dean; james; joeseph; 
-                sarah; shawn; sam; daniel
+                sarah; shawn; sam; daniel;                
              ]
 
 System.Console.WriteLine("Running...");
