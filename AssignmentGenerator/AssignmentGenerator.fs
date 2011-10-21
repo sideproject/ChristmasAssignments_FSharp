@@ -15,40 +15,6 @@ type Assignment =
         To : Person
     }
 
-//let eliz =          { FirstName="eliz"; LastName="1"; AgeType="child"; Previous=["martha";]}
-//let margaret =      { FirstName="margaret"; LastName="1"; AgeType="parent"; Previous=["mary"; "anne"; "laura";]}
-//let elise =         { FirstName="elise"; LastName="1"; AgeType="parent"; Previous=["james"; "hollie"; "sam";]}
-//let christopher =   { FirstName="christopher"; LastName="1"; AgeType="child"; Previous=["shawn"; "daniel"; "anne";]}
-//let julia =         { FirstName="julia"; LastName="1"; AgeType="child"; Previous=["carla"; "mallory"; "charlie"]}
-//let charlie =       { FirstName="charlie"; LastName="2"; AgeType="parent"; Previous=["jimmy"; "dean"; "hollie";]}
-//let anne =          { FirstName="anne"; LastName="2"; AgeType="parent"; Previous=["sarah"; "carla"; "christopher";]}
-//let emily =         { FirstName="emily"; LastName="2"; AgeType="child"; Previous=["sam"; "james"; "andrew";]}
-//let laura =         { FirstName="laura"; LastName="2"; AgeType="child"; Previous=["martha"; "andrew"; "jimmy"; ]}
-//let jimmy =         { FirstName="jimmy"; LastName="3"; AgeType="parent"; Previous=["daniel"; "charlie"; "elise";]}
-//let hollie =        { FirstName="hollie"; LastName="3"; AgeType="parent"; Previous=["elise"; "sarah"; "mallory";]}
-//let andrew =        { FirstName="andrew"; LastName="3"; AgeType="child"; Previous=["joeseph"; "sam"; "frank";]}
-//let amie =          { FirstName="amie"; LastName="3"; AgeType="child"; Previous=["emiliy"; "martha"; "emily";]}
-//let frank =         { FirstName="frank"; LastName="4"; AgeType="parent"; Previous=["margaret"; "shawn"; "daniel";]}
-//let carla =         { FirstName="carla"; LastName="4"; AgeType="parent"; Previous=["anne"; "mary"; "dean";]}
-//let mallory =       { FirstName="mallory"; LastName="4"; AgeType="child"; Previous=["christopher"; "joseph"; "amie";]}
-//let martha =        { FirstName="martha"; LastName="4"; AgeType="child"; Previous=["amie"; "julia"; "mary";]}
-//let mary =          { FirstName="mary"; LastName="5"; AgeType="parent"; Previous=["hollie"; "elise"; "eliz";]}
-//let dean =          { FirstName="dean"; LastName="5"; AgeType="parent"; Previous=["frank"; "jimmy"; "shawn";]}
-//let james =         { FirstName="james"; LastName="5"; AgeType="child"; Previous=["mallory"; "christopher"; "sarah";]}
-//let joeseph =       { FirstName="joeseph"; LastName="5"; AgeType="child"; Previous=["andrew"; "laura"; "julia";]}
-//let sarah =         { FirstName="sarah"; LastName="6"; AgeType="parent"; Previous=["charlie"; "margaret"; "james";]}
-//let shawn =         { FirstName="shawn"; LastName="6"; AgeType="parent"; Previous=["dean"; "frank"; "carla";]}
-//let sam =           { FirstName="sam"; LastName="6"; AgeType="child"; Previous=["laura"; "amie"; "joseph";]}
-//let daniel =        { FirstName="daniel"; LastName="6"; AgeType="child"; Previous=["julia"; "emily"; "margaret"; ]}
-//
-//let people = [eliz; margaret; elise; christopher; julia; 
-//            charlie; anne; emily; laura; 
-//            jimmy; hollie; andrew; amie; 
-//            frank; carla; mallory; martha; 
-//            mary; dean; james; joeseph; 
-//            sarah; shawn; sam; daniel]
-
-
 /////////////////////////////////////////////rules///////////////////////////////////////////////////////////////////
 let rule_not_self assignments = 
     let q = List.tryFind (fun x -> x.From.FirstName = x.To.FirstName) assignments
@@ -143,14 +109,12 @@ let rule_no_previous_family_assignments assignments =
 
 /////////////////////////////////////////////rules///////////////////////////////////////////////////////////////////
 
-let randomize list seed (random:System.Random) = 
-    let comp i j = 
+let randomize list (random:System.Random) = 
+    let comp (i:int) (j:int) = 
         if i > j then 1
         else if i < j then -1
         else 0
 
-    //let seed' = (int)System.DateTime.Now.Ticks + seed
-    //let random = new System.Random(seed') 
     let list'=
         list
         |> List.map (fun i -> (random.Next(), i))
@@ -185,14 +149,14 @@ let assignments_are_valid assignments =
         && (rule_max_one_difficult assignments) 
         && (parent_to_child_ratio assignments distinct_families) 
         && (rule_good_family_mix assignments distinct_families)
-        && (rule_no_previous_family_assignments assignments)
+        //&& (rule_no_previous_family_assignments assignments)
 
 let find_assignments people_list n = 
     let rec find_assignments_kernel people_list n random = 
         if n = 0 then System.Console.WriteLine("MAX RECURSION REACHED")
         else
             if n % 100000 = 0 then System.Console.Write(".")
-            let people_list' = randomize people_list (n * 2) random
+            let people_list' = randomize people_list random
             let assignments = create_assignment_list people_list people_list' []
         
             if assignments_are_valid assignments then
@@ -203,9 +167,4 @@ let find_assignments people_list n =
 
     let random = new System.Random() 
     find_assignments_kernel people_list n random
-    
 
-//let start = System.DateTime.Now
-//find_assignments people 5000000
-//let finish = System.DateTime.Now   
-//System.Console.WriteLine(finish - start)
