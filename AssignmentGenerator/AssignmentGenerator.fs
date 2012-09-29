@@ -58,8 +58,7 @@ let parent_to_child_ratio assignments families =
 
 let rule_good_family_mix assignments families =    
 //make sure that we don't assign one family all of another family (max 60% same family)
-//bean family currently has 5 people (2 / 5 = 0.4) [instead of 50% -- 0.5 seems to be impossible to randomly find
-//1 - 0.4 = 0.6 -> 60%
+//bean family currently has 5 people (3 / 5 = 0.6)
 
     let rec finder assignments families2 acc = 
         if List.isEmpty families2 then acc
@@ -72,7 +71,7 @@ let rule_good_family_mix assignments families =
             let family_member_count = List.length family_assignments
             let ratio = (float)(List.length distinct_families_assigned_to) / (float)family_member_count 
             
-            if ratio >= 0.4 then
+            if ratio >= 0.6 then
                 finder assignments (List.tail families2) true
             else
                 false
