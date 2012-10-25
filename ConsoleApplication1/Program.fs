@@ -1,7 +1,7 @@
 ﻿// Learn more about F# at http://fsharp.net
 open AssignmentGenerator
 
-let margaret =      { FirstName="margaret";     LastName="1"; AgeType="parent"; Previous=["mary";        "anne";        "laura";       "daniel";      "andrew";     ]}
+let margaret =      { FirstName="margaret";     LastName="1"; AgeType="parent"; Previous=["mary";        "anne";        "laura";       "daniel";      "jimmy";     ]}
 let elise =         { FirstName="elise";        LastName="1"; AgeType="parent"; Previous=["james";       "hollie";      "sam";         "anne";        "megan";      ]}
 let christopher =   { FirstName="christopher";  LastName="1"; AgeType="child";  Previous=["shawn";       "daniel";      "anne";        "carla";       "laura";      ]}
 let eliz =          { FirstName="eliz";         LastName="1"; AgeType="child";  Previous=[                              "martha";      "sam";         "shawn";      ]}
@@ -9,9 +9,9 @@ let julia =         { FirstName="julia";        LastName="1"; AgeType="child";  
 //let jacob =         { FirstName="jacob";        LastName="1"; AgeType="child";  Previous=[                                                          "X"           ]}
 let charlie =       { FirstName="charlie";      LastName="2"; AgeType="parent"; Previous=["jimmy";       "dean";        "hollie";      "margaret";    "elise";      ]}
 let anne =          { FirstName="anne";         LastName="2"; AgeType="parent"; Previous=["sarah";       "carla";       "christopher"; "frank";       "james";      ]}
-let emily =         { FirstName="emily";        LastName="2"; AgeType="child";  Previous=["sam";         "james";       "andrew";      "christopher"; "X"           ]}
-let laura =         { FirstName="laura";        LastName="2"; AgeType="child";  Previous=["martha";      "andrew";      "jimmy";       "joeseph";     "dean";       ]}
-//let tyler =         { FirstName="tyler";        LastName="2"; AgeType="child";  Previous=[                                                          "daniel";     ]}
+let emily =         { FirstName="emily";        LastName="2"; AgeType="child";  Previous=["sam";         "james";       "andrew";      "christopher"; "dean";       ]}
+let laura =         { FirstName="laura";        LastName="2"; AgeType="child";  Previous=["martha";      "andrew";      "jimmy";       "joeseph";     "daniel";     ]}
+//let tyler =         { FirstName="tyler";        LastName="2"; AgeType="child";  Previous=[                                                          "X"           ]}
 let jimmy =         { FirstName="jimmy";        LastName="3"; AgeType="parent"; Previous=["daniel";      "charlie";     "elise";       "mary";        "anne";       ]}
 let hollie =        { FirstName="hollie";       LastName="3"; AgeType="parent"; Previous=["elise";       "sarah";       "mallory";     "shawn";       "carla";      ]}
 let andrew =        { FirstName="andrew";       LastName="3"; AgeType="child";  Previous=["joeseph";     "sam";         "frank";       "laura";       "sarah";      ]}
@@ -27,8 +27,8 @@ let james =         { FirstName="james";        LastName="5"; AgeType="child";  
 let joeseph =       { FirstName="joeseph";      LastName="5"; AgeType="child";  Previous=["andrew";      "laura";       "julia";       "sarah";       "eliz";       ]}
 let sarah =         { FirstName="sarah";        LastName="6"; AgeType="parent"; Previous=["charlie";     "margaret";    "james";       "julia";       "amie";       ]}
 let shawn =         { FirstName="shawn";        LastName="6"; AgeType="parent"; Previous=["dean";        "frank";       "carla";       "jimmy";       "julia";      ]}
-let sam =           { FirstName="sam";          LastName="6"; AgeType="child";  Previous=["laura";       "amie";        "joseph";      "charlie";     "jimmy";      ]}
-let daniel =        { FirstName="daniel";       LastName="6"; AgeType="child";  Previous=["julia";       "emily";       "margaret";    "amie";        "frank";      ]}
+let sam =           { FirstName="sam";          LastName="6"; AgeType="child";  Previous=["laura";       "amie";        "joseph";      "charlie";     "andrew";      ]}
+let daniel =        { FirstName="daniel";       LastName="6"; AgeType="child";  Previous=["julia";       "emily";       "margaret";    "amie";        "frank";       ]}
   
 
 let people = [  margaret; elise; christopher; eliz; julia; //jacob;

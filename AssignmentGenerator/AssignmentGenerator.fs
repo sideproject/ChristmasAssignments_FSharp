@@ -41,7 +41,14 @@ let rule_no_previous_people assignments =
 let rule_max_one_difficult assignments = 
     let andrew_assignment = List.find (fun a -> a.To.FirstName = "andrew") assignments
     let jimmy_assignment = List.find (fun a -> a.To.FirstName = "jimmy") assignments
-    andrew_assignment.From.LastName <> jimmy_assignment.From.LastName
+    let frank_assignment = List.find (fun a -> a.To.FirstName = "frank") assignments
+
+    let distinctCount = ([andrew_assignment.From.LastName; jimmy_assignment.From.LastName; frank_assignment.From.LastName]
+        |> List.toSeq
+        |> Seq.distinct
+        |> Seq.length)
+
+    distinctCount = 3 //assure all three people are assigned to three different families
 
 let parent_to_child_ratio assignments families =
     let rec finder assignments families2 acc = 
