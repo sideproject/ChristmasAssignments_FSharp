@@ -11,7 +11,7 @@ let charlie =       { FirstName="charlie";      LastName="2"; AgeType="parent"; 
 let anne =          { FirstName="anne";         LastName="2"; AgeType="parent"; Previous=["sarah";       "carla";       "christopher"; "frank";       "james";      ]}
 let emily =         { FirstName="emily";        LastName="2"; AgeType="child";  Previous=["sam";         "james";       "andrew";      "christopher"; "dean";       ]}
 let laura =         { FirstName="laura";        LastName="2"; AgeType="child";  Previous=["martha";      "andrew";      "jimmy";       "joeseph";     "daniel";     ]}
-//let tyler =         { FirstName="tyler";        LastName="2"; AgeType="child";  Previous=[                                                          "X"           ]}
+let tyler =         { FirstName="tyler";        LastName="2"; AgeType="child";  Previous=[                                                            "X"           ]}
 let jimmy =         { FirstName="jimmy";        LastName="3"; AgeType="parent"; Previous=["daniel";      "charlie";     "elise";       "mary";        "anne";       ]}
 let hollie =        { FirstName="hollie";       LastName="3"; AgeType="parent"; Previous=["elise";       "sarah";       "mallory";     "shawn";       "carla";      ]}
 let andrew =        { FirstName="andrew";       LastName="3"; AgeType="child";  Previous=["joeseph";     "sam";         "frank";       "laura";       "sarah";      ]}
@@ -32,7 +32,7 @@ let daniel =        { FirstName="daniel";       LastName="6"; AgeType="child";  
   
 
 let people = [  margaret; elise; christopher; eliz; julia; //jacob;
-                charlie; anne; emily; laura; //tyler; 
+                charlie; anne; emily; laura; tyler; 
                 jimmy; hollie; andrew; megan; amie; 
                 frank; carla; mallory; martha; 
                 mary; dean; james; joeseph; 
@@ -42,7 +42,7 @@ let people = [  margaret; elise; christopher; eliz; julia; //jacob;
 System.Console.WriteLine("Running...");
 
 let start = System.DateTime.Now
-AssignmentGenerator.find_assignments people 10000000
+AssignmentGenerator.find_assignments people (1000 * 1000 * 10)
 let finish = System.DateTime.Now   
 System.Console.WriteLine(finish - start)
 

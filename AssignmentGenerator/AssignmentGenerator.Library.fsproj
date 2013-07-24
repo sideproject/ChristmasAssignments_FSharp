@@ -38,7 +38,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Numerics" />
     <Reference Include="xunit">
-      <HintPath>C:\Documents and Settings\christopher\My Documents\Visual Studio 2010\Projects\Christmas\Christmas\lib\xunit.dll</HintPath>
+      <HintPath>lib\xunit.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

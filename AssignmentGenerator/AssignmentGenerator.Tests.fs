@@ -122,7 +122,7 @@ let parent_to_child_ratio_true() =
     let assignments = [a1;a2;a3;a4;a5;a6;a7;a8]
 
     let distinct_families = ["1"; "2"]   
-    Assert.True(AssignmentGenerator.parent_to_child_ratio assignments distinct_families)    
+    Assert.True(AssignmentGenerator.rule_good_parent_to_child_ratio assignments distinct_families)    
     
 [<Fact>]
 let parent_to_child_ratio_false1() =
@@ -150,7 +150,7 @@ let parent_to_child_ratio_false1() =
     let assignments = [a1;a2;a3;a4;a5;a6;a7;a8] //only assigned children to family1
 
     let distinct_families = ["1"; "2"]   
-    Assert.False(AssignmentGenerator.parent_to_child_ratio assignments distinct_families)      
+    Assert.False(AssignmentGenerator.rule_good_parent_to_child_ratio assignments distinct_families)      
 
 [<Fact>]
 let parent_to_child_ratio_false2() =
@@ -177,7 +177,7 @@ let parent_to_child_ratio_false2() =
     let assignments = [a1;a2;a3;a4;a5;a6;a7;a8] //only assigned one child to family1
 
     let distinct_families = ["1"; "2"]   
-    Assert.False(AssignmentGenerator.parent_to_child_ratio assignments distinct_families)      
+    Assert.False(AssignmentGenerator.rule_good_parent_to_child_ratio assignments distinct_families)      
 
 
 [<Fact>]

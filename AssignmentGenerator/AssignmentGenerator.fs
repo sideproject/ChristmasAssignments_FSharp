@@ -50,7 +50,7 @@ let rule_max_one_difficult assignments =
 
     distinctCount = 3 //assure all three people are assigned to three different families
 
-let parent_to_child_ratio assignments families =
+let rule_good_parent_to_child_ratio assignments families =
     let rec finder assignments families2 acc = 
         if List.isEmpty families2 then acc
         else
@@ -128,13 +128,18 @@ let randomize list (random:System.Random) =
     let (_,list'') = List.unzip list' 
     list''
 
-let rec print_assignments assignments = 
-    if List.isEmpty assignments then System.Console.WriteLine("")
-    else
-        let h = List.head assignments
-        //System.Console.WriteLine(System.String.Format("{0}:{1}", h.From, h.To))
-        System.Console.WriteLine(System.String.Format("{0}:{1}", h.From.FirstName, h.To.FirstName))
-        print_assignments (List.tail assignments)
+let print_assignments assignments =
+    let rec print_assignments_kernel assignments last_family =
+        if List.isEmpty assignments then System.Console.WriteLine("")
+        else
+            let h = List.head assignments
+            if last_family <> "" && last_family <> h.From.LastName then 
+                System.Console.WriteLine()
+
+            System.Console.WriteLine(System.String.Format("{0}:{1}", h.From.FirstName, h.To.FirstName))
+            print_assignments_kernel (List.tail assignments) h.From.LastName
+
+    print_assignments_kernel assignments ""
 
 let rec create_assignment_list person_list1 person_list2 builder = 
     if List.isEmpty person_list1 then List.rev builder
@@ -153,7 +158,7 @@ let assignments_are_valid assignments =
         && (rule_not_same_family assignments) 
         && (rule_no_previous_people assignments) 
         && (rule_max_one_difficult assignments) 
-        && (parent_to_child_ratio assignments distinct_families) 
+        && (rule_good_parent_to_child_ratio assignments distinct_families) 
         && (rule_good_family_mix assignments distinct_families)
         //&& (rule_no_previous_family_assignments assignments)
 
