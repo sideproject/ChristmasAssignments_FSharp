@@ -64,8 +64,11 @@ let rule_good_parent_to_child_ratio assignments families =
     finder assignments families true
 
 let rule_good_family_mix assignments families =    
-//make sure that we don't assign one family all of another family (max 60% same family)
-//bean family currently has 5 people (3 / 5 = 0.6)
+//make sure that we don't assign one family all of another family (max 50% same family)
+//mcpartland (4) family currently has 6 people (3 / 6 = 0.5)
+
+////make sure that we don't assign one family all of another family (max 60% same family)
+////bean family currently has 5 people (3 / 5 = 0.6)
 
     let rec finder assignments families2 acc = 
         if List.isEmpty families2 then acc
@@ -78,7 +81,7 @@ let rule_good_family_mix assignments families =
             let family_member_count = List.length family_assignments
             let ratio = (float)(List.length distinct_families_assigned_to) / (float)family_member_count 
             
-            if ratio >= 0.6 then
+            if ratio >= 0.5 then
                 finder assignments (List.tail families2) true
             else
                 false
@@ -155,7 +158,7 @@ let assignments_are_valid assignments =
 
     (rule_not_self assignments) 
         //&& (rule_temp_james_elise assignments)
-        && (rule_not_same_family assignments) 
+        && (rule_not_same_family assignments)
         && (rule_no_previous_people assignments) 
         && (rule_max_one_difficult assignments) 
         && (rule_good_parent_to_child_ratio assignments distinct_families) 
