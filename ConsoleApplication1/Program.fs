@@ -40,7 +40,7 @@ let people = [  margaret; elise; christopher; eliz; julia; jacob;
                 charlie; anne; emily; laura; tyler;
                 jimmy; hollie; andrew; megan; amie;
                 frank; carla; mallory; martha; logan; jordan;
-                mary; dean; james; joseph; 
+                mary; dean; james; joeseph; 
                 sarah; shawn; sam; daniel;
              ]
 
